@@ -10,7 +10,7 @@ import UIKit
 final class ResultViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet private var emojiAnswerLabel: UILabel!
-    @IBOutlet private var textAnswerLabel: UILabel!
+    @IBOutlet private var definitionLabel: UILabel!
     
 // MARK: - Public Properties
     var answers: [Answer]!
@@ -26,7 +26,7 @@ final class ResultViewController: UIViewController {
         animalAnswer = countAnimals(In: animals)
         
         emojiAnswerLabel.text = "Вы - \(animalAnswer.rawValue)"
-        textAnswerLabel.text = animalAnswer.definition
+        definitionLabel.text = animalAnswer.definition
         
         navigationItem.hidesBackButton = true
     }
