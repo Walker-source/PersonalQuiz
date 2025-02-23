@@ -10,22 +10,21 @@ import UIKit
 final class ResultViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet private var emojiAnswerLabel: UILabel!
-    @IBOutlet private var textAnimalLabel: UILabel!
+    @IBOutlet private var textAnswerLabel: UILabel!
 // MARK: - Public Properties
     var answers: [Answer]!
     
 // MARK: - Private Properties
-    private var answerEmoji = ""
-    private var answerText: String {
+    private var textAnswer: String {
         switch animalAnswer {
         case .dog:
-            "Вы собака"
+            "Собака"
         case .cat:
-            "Вы кот"
+            "Кот"
         case .turtle:
-            "Вы черепаха"
+            "Черепаха"
         case .rabbit:
-            "Вы кролик"
+            "Кролик"
         case .none:
             ""
         }
@@ -40,7 +39,7 @@ final class ResultViewController: UIViewController {
         animalAnswer = countAnimals(In: animals)
         
         emojiAnswerLabel.text = "Вы - \(animalAnswer.rawValue)"
-        textAnimalLabel.text = answerText
+        textAnswerLabel.text = textAnswer
         
         navigationItem.hidesBackButton = true
     }
