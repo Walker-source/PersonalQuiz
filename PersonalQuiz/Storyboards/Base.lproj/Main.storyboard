@@ -335,8 +335,8 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="definitionLabel" destination="QVJ-OF-Dsk" id="5QD-cx-mT5"/>
                         <outlet property="emojiAnswerLabel" destination="lnc-N2-uJB" id="qec-ef-h7F"/>
-                        <outlet property="textAnswerLabel" destination="QVJ-OF-Dsk" id="5QD-cx-mT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoN-Wa-sHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
