@@ -11,24 +11,11 @@ final class ResultViewController: UIViewController {
 // MARK: - IB Outlets
     @IBOutlet private var emojiAnswerLabel: UILabel!
     @IBOutlet private var textAnswerLabel: UILabel!
+    
 // MARK: - Public Properties
     var answers: [Answer]!
     
 // MARK: - Private Properties
-    private var textAnswer: String {
-        switch animalAnswer {
-        case .dog:
-            "Собака"
-        case .cat:
-            "Кот"
-        case .turtle:
-            "Черепаха"
-        case .rabbit:
-            "Кролик"
-        case .none:
-            ""
-        }
-    }
     private var animals: [Animal] = []
     private var animalAnswer: Animal!
     
@@ -39,7 +26,7 @@ final class ResultViewController: UIViewController {
         animalAnswer = countAnimals(In: animals)
         
         emojiAnswerLabel.text = "Вы - \(animalAnswer.rawValue)"
-        textAnswerLabel.text = textAnswer
+        textAnswerLabel.text = animalAnswer.definition
         
         navigationItem.hidesBackButton = true
     }
@@ -59,7 +46,6 @@ private func getAnimals(From answers: [Answer]) -> [Animal] {
     }
     return animals
 }
-
 private func countAnimals(In animals: [Animal]) -> Animal {
     var dog = 0
     var cat = 0
