@@ -336,7 +336,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emojiAnswerLabel" destination="lnc-N2-uJB" id="qec-ef-h7F"/>
-                        <outlet property="textAnimalLabel" destination="QVJ-OF-Dsk" id="5QD-cx-mT5"/>
+                        <outlet property="textAnswerLabel" destination="QVJ-OF-Dsk" id="5QD-cx-mT5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QoN-Wa-sHN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
