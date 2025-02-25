@@ -15,18 +15,10 @@ final class ResultViewController: UIViewController {
 // MARK: - Public Properties
     var answers: [Answer]!
     
-// MARK: - Private Properties
-    private var animals: [Animal] = []
-    private var animalAnswer: Animal!
-    
 // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        animals = getAnimals(From: answers)
-        animalAnswer = countAnimals(In: animals)
-        
-        emojiAnswerLabel.text = "Вы - \(animalAnswer.rawValue)"
-        definitionLabel.text = animalAnswer.definition
+        countAnimals()
         
         navigationItem.hidesBackButton = true
     }
@@ -38,44 +30,31 @@ final class ResultViewController: UIViewController {
 }
 
 // MARK: - Private Methods
-private func getAnimals(From answers: [Answer]) -> [Animal] {
-    var animals: [Animal] = []
-    
-    answers.forEach { element in
-        animals.append(element.animal)
-    }
-    return animals
-}
-private func countAnimals(In animals: [Animal]) -> Animal {
-    var dog = 0
-    var cat = 0
-    var turtle = 0
-    var rabbit = 0
-    var animal = Animal.dog
-    
-    animals.forEach { element in
-        switch element {
-        case .dog:
-            dog += 1
-        case .cat:
-            cat += 1
-        case .turtle:
-            turtle += 1
-        default:
-            rabbit += 1
+private  extension ResultViewController {
+    func countAnimals() {
+        var frequencyOfAnimals: [Animal: Int] = [:]
+        var animals: [Animal] = []
+        
+        answers.forEach { element in
+            animals.append(element.animal)
         }
+        
+        for animal in animals {
+            if let animalTypeCount = frequencyOfAnimals[animal] {
+                frequencyOfAnimals
+                    .updateValue(animalTypeCount + 1, forKey: animal)
+            } else {
+                frequencyOfAnimals[animal] = 1
+            }
+        }
+        
+        let animalSorted = frequencyOfAnimals.sorted { $0.value > $1.value }
+        guard let animal = animalSorted.first?.key else {return}
+        
+        emojiAnswerLabel.text = String(animal.rawValue)
+        definitionLabel.text = animal.definition
     }
-    
-    if dog >= 2 {
-        animal = Animal.dog
-    } else if cat >= 2 {
-        animal = Animal.cat
-    } else if turtle >= 2 {
-        animal = Animal.turtle
-    } else if rabbit >= 2 {
-        animal = Animal.rabbit
-    }
-    return animal
 }
+
 
 
